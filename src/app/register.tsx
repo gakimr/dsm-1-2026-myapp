@@ -10,29 +10,53 @@ import {
   View,
 } from "react-native";
 
-export default function Index() {
+export default function Register() {
   const router = useRouter();
+  const [namefull, setNamefull] = useState<string>();
   const [senha, setSenha] = useState<string>();
+  const [senha2, setSenha2] = useState<string>();
   const [usuario, setUsuario] = useState<string>();
 
   function onClickAcessar() {
-    if (usuario == "teste@test.com" && senha == "123456") {
-      router.navigate("/dashboard");
-    } else {
-      Alert.alert("Usuário ou Senha invalido ...");
+    if (namefull == "") {
+      Alert.alert(
+        "Campo Obrigatorio não preenchido! \n O nome completo esta em Branco \n Por favor providenciar o preenchimento ...",
+      );
+      return;
     }
+    if (usuario === "") {
+      Alert.alert(
+        "As senhas informada são Diferente! \n Por favor providencia e a correção ...",
+      );
+    }
+    if (senha !== senha2) {
+      Alert.alert(
+        "As senhas informada são Diferente! \n Por favor providencia e a correção ...",
+      );
+      return;
+    }
+    router.navigate("/");
   }
 
   return (
     <View style={{ flex: 1, padding: 5, gap: 5, backgroundColor: "#fff" }}>
       <View style={styles.container}>
         <Image source={require("@/assets/images/favicon.png")} />
-        <Text style={styles.titulo}>Login</Text>
+        <Text style={styles.titulo}>Register</Text>
         <Text style={{ fontSize: 16, fontWeight: "bold" }}>
-          Aula 10/08/2026
+          Aula 17/08/2026
         </Text>
       </View>
       <View style={styles.main}>
+        <Text style={styles.inputText}>Nome Completo:</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Informe o Nome Completo!"
+          onChangeText={(value) => {
+            setNamefull(value);
+          }}
+        />
+
         <Text style={styles.inputText}>usuário:</Text>
         <TextInput
           style={styles.input}
@@ -51,19 +75,28 @@ export default function Index() {
             setSenha(e);
           }}
         />
+        <Text style={styles.inputText}>Repetir senha:</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="repeti a senha!"
+          secureTextEntry
+          onChangeText={(e) => {
+            setSenha2(e);
+          }}
+        />
       </View>
       <View style={styles.footer}>
         <Text style={styles.inputText}>
-          Não tem login,{" "}
-          <Link href={"/register"}>
-            <Text style={styles.textoLink}>faça o cadastro aqui!</Text>{" "}
+          Já possui cadastro,{" "}
+          <Link href={"/"}>
+            <Text style={styles.textoLink}>façao o login!</Text>{" "}
           </Link>
         </Text>
         <Button
           onPress={() => {
             onClickAcessar();
           }}
-          title="Acessar"
+          title="Registrar"
         />
       </View>
     </View>
