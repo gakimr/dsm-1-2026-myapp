@@ -1,4 +1,5 @@
-import { Button, Image, StyleSheet, Text, View } from "react-native";
+import { ButtonFatec } from "@/components/Button";
+import { Image, StyleSheet, Text, View } from "react-native";
 
 export default function DashBoard() {
   return (
@@ -14,8 +15,7 @@ export default function DashBoard() {
         <Text style={styles.inputText}>tela principal</Text>
       </View>
       <View style={styles.footer}>
-        <Button title="Login" />
-        <Button title="Register" />
+        <ButtonFatec />
       </View>
     </View>
   );

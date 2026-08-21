@@ -29,14 +29,14 @@ export default function Index() {
         <Image source={require("@/assets/images/favicon.png")} />
         <Text style={styles.titulo}>Login</Text>
         <Text style={{ fontSize: 16, fontWeight: "bold" }}>
-          Aula 10/08/2026
+          Aula 17/08/2026
         </Text>
       </View>
       <View style={styles.main}>
-        <Text style={styles.inputText}>usuário:</Text>
+        <Text style={styles.inputText}>Login:</Text>
         <TextInput
           style={styles.input}
-          placeholder="Informe o login!"
+          placeholder="Informe o login/email!"
           onChangeText={(value) => {
             setUsuario(value);
           }}
