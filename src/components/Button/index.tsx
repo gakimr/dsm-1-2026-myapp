@@ -1,9 +1,17 @@
+import { ElementType } from "react";
 import { StyleSheet, Text, TouchableOpacity } from "react-native";
 
-export function ButtonFatec() {
+interface ButtonFatecProps {
+  text: string;
+  action: () => void;
+  icon: ElementType;
+  iconName: string;
+}
+
+export function ButtonFatec({text, action, icon:Icon}:ButtonFatecProps) {
   return (
-    <TouchableOpacity style={estilos.container}>
-      <Text style={estilos.title}> Meu Button </Text>
+    <TouchableOpacity onPress={action} style={[estilos.container]}>
+      <Text style={estilos.title}>{text}</Text>
     </TouchableOpacity>
   );
 }
