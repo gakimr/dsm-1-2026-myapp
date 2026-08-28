@@ -1,7 +1,26 @@
 import { ButtonFatec } from "@/components/Button";
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Alert, Image, StyleSheet, Text, View } from "react-native";
+import { useRouter} from "expo-router"; 
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 
 export default function DashBoard() {
+  const route = useRouter();
+  function logout(){
+    route.navigate("/");
+  }
+  function openCadastros(){
+    console.log( "novo registro") ;
+    Alert.alert("sucesso ao inserir novo registro ");
+  }
+  function newRegister(){
+    route.navigate("/register");
+  }
+  function deleteRegister(){
+    console.log( "apagando registro") ;
+    Alert.alert("apagando registro atual");
+  }
+
   return (
     <View style={{ flex: 1, padding: 5, gap: 5, backgroundColor: "#fff" }}>
       <View style={styles.container}>
@@ -15,7 +34,31 @@ export default function DashBoard() {
         <Text style={styles.inputText}>tela principal</Text>
       </View>
       <View style={styles.footer}>
-        <ButtonFatec />
+        <ButtonFatec 
+          text={"sair"}
+          action ={()=>{ logout()}}
+          icon={MaterialCommunityIcons}
+          iconName= {"exit-run"}
+        />
+        <ButtonFatec 
+          text={"cadastros"}
+          action ={()=>{ openCadastros()}}
+          icon={MaterialCommunityIcons}
+          iconName= {"exit-run"}
+        />
+        <ButtonFatec 
+          text={"Novo"}
+          action ={()=>{newRegister()}}
+          icon={MaterialCommunityIcons}
+          iconName= {"exit-run"}
+          />
+          
+        <ButtonFatec 
+          text={"Excluir"}
+          action ={()=>{( deleteRegister())}}
+          icon={MaterialIcons}
+          iconName= {"arrow-back-ios-new"}
+          />
       </View>
     </View>
   );
@@ -56,7 +99,7 @@ const styles = StyleSheet.create({
     flex: 1 / 3,
     alignItems: "center",
     justifyContent: "center",
-    flexDirection: "row",
+    
     gap: 10,
     // backgroundColor: "lightgreen",
   },
