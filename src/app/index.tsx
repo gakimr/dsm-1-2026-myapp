@@ -16,7 +16,7 @@ export default function Index() {
   const [usuario, setUsuario] = useState<string>();
 
   function onClickAcessar() {
-    if (usuario == "teste@test.com" && senha == "123456") {
+    if (usuario == "teste@test.com" && senha == "123") {
       router.navigate("/dashboard");
     } else {
       Alert.alert("Usuário ou Senha invalido ...");
